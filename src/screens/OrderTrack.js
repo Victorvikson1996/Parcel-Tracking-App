@@ -12,7 +12,7 @@ import React from 'react';
 import {COLORS, Items} from '../utils';
 import {Searchbar} from 'react-native-paper';
 import LottieView from 'lottie-react-native';
-import {ParcelCard, Button, Input} from '../components';
+import {ParcelCard, Button, Input, IconFlatlist} from '../components';
 
 const {width, height} = Dimensions.get('window');
 
@@ -58,10 +58,7 @@ const OrderTrack = props => {
         <Card />
       </View>
       <View style={styles.parcelContainer}>
-        <ParcelCard
-          label="Scan With Barcode Scanner"
-          icon={require('../assets/Icons/barcode.png')}
-        />
+        <IconFlatlist />
       </View>
     </SafeAreaView>
   );
