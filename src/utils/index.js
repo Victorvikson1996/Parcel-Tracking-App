@@ -1,3 +1,4 @@
 import COLORS from './Colors';
-
-export {COLORS};
+import Features from './Features';
+import Icons from './Icons';
+export {COLORS, Features, Icons};

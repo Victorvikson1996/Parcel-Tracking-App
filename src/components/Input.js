@@ -43,4 +43,4 @@ const styles = StyleSheet.create({
     padding: 10,
   },
 });
-export default (InputText, Input);
+export default Input;

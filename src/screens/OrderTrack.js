@@ -1,23 +1,66 @@
-import {View, Text, StyleSheet, SafeAreaView, StatusBar} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  SafeAreaView,
+  StatusBar,
+  KeyboardAvoidingView,
+  TouchableWithoutFeedback,
+  Dimensions,
+} from 'react-native';
 import React from 'react';
-import {ScrollView} from 'react-native-gesture-handler';
-import {COLORS} from '../utils';
-import Input from '../components/Input';
+import {COLORS, Items} from '../utils';
+import {Searchbar} from 'react-native-paper';
+import LottieView from 'lottie-react-native';
+import {ParcelCard, Button, Input} from '../components';
 
-const OrderTrack = () => {
-  const [trackId, setTrackId] = React.useState('2745814581');
+const {width, height} = Dimensions.get('window');
+
+const renderItem = ({item, index}) => {
+  return <ParcelCard item={item} index={index} />;
+};
+
+const Card = () => {
+  const [itemIcon, setItemIcon] = React.useState(Items);
   return (
-    <SafeAreaView
-      style={{backgroundColor: COLORS.yellow, flex: 0.4, borderRadius: 40}}>
+    <View style={styles.card}>
+      <Text style={styles.cardText}>Track Your Order Just In One Click</Text>
+      <LottieView
+        source={require('../assets/animations/50158-delivery-cart-box.json')}
+        autoPlay
+        speed={0.3}
+        loop={true}
+      />
+      <View style={styles.inputContainer}></View>
+    </View>
+  );
+};
+
+{
+  /* <View style={styles.buttonContainer}>
+  <Button label="Track Parcel" />
+</View>; */
+}
+
+const OrderTrack = props => {
+  const [trackIcon, setTrackIcon] = React.useState('');
+  return (
+    <SafeAreaView style={styles.SafeAreaView}>
       <StatusBar barStyle="light-content" />
-      <View style={styles.parcel}>
-        <Text style={styles.textContainer}>Track Your Parcel </Text>
+
+      <View style={styles.textContainer}>
+        <Text style={styles.text}>Track Your Parcel</Text>
       </View>
-      <View style={styles.trackbar}>
-        <Input
-          placeholder="Enter Your Order ID"
-          onChangeText={text => setTrackId(text)}
-          value={trackId}
+      <View style={styles.inputContainer}>
+        <Input placeholder="Enter Your Track ID" style={styles.textInput} />
+      </View>
+      <View style={{alignItems: 'center'}}>
+        <Card />
+      </View>
+      <View style={styles.parcelContainer}>
+        <ParcelCard
+          label="Scan With Barcode Scanner"
+          icon={require('../assets/Icons/barcode.png')}
         />
       </View>
     </SafeAreaView>
@@ -31,37 +74,68 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 
-  // trackbar: {
-  //   height: 40,
-  //   width: '100%',
-  //   backgroundColor: COLORS.white,
-  //   borderRadius: 40,
-  //   marginVertical: 10,
-  //   marginHorizontal: 20,
-  //   overflow: 'hidden',
-  // },
-
-  trackbar: {
-    backgroundColor: '#fff',
-    padding: 10,
-    marginVertical: 10,
-    width: '70%',
-    height: 40,
-    borderRadius: 5,
-    overflow: 'hidden',
-    alignSelf: 'center',
-    paddingTop: 10,
-  },
   textContainer: {
-    color: COLORS.black,
-    fontSize: 25,
-    fontWeight: 'bold',
-    marginVertical: 10,
-    marginLeft: 20,
+    padding: 20,
+    flexDirection: 'row',
+    marginRight: 20,
+    top: 20,
   },
-  parcel: {
-    marginVertical: 10,
+  text: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: COLORS.black,
+  },
+  card: {
+    backgroundColor: COLORS.yellow,
+    borderRadius: 12,
+    paddingHorizontal: 20,
+    paddingVertical: 20,
     marginHorizontal: 20,
+    marginTop: 20,
+    marginBottom: 20,
+    height: height * 0.25,
+    width: '90%',
+  },
+  cardText: {
+    color: COLORS.black,
+    fontSize: 14,
+    fontWeight: '600',
+  },
+
+  textInput: {
+    backgroundColor: COLORS.white,
+    borderRadius: 10,
+    marginHorizontal: 20,
+    marginVertical: 10,
+    height: 50,
+    paddingHorizontal: 10,
+    borderColor: COLORS.grey,
+    borderWidth: 1,
+    width: '80%',
+  },
+  textInput2: {
+    backgroundColor: COLORS.white,
+    borderRadius: 10,
+    marginHorizontal: 20,
+    marginVertical: 10,
+    height: 50,
+    paddingHorizontal: 10,
+  },
+  inputContainer: {
+    marginTop: 20,
+    alignItems: 'center',
+  },
+  buttonContainer: {},
+  SafeAreaView: {
+    backgroundColor: COLORS.white,
+    width: width,
+    height: height,
+  },
+  parcelContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginHorizontal: 20,
+    marginVertical: 20,
   },
 });
 export default OrderTrack;

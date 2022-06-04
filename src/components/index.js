@@ -1,6 +1,14 @@
+// import Button from './Button';
+// import Input from './Input';
+
+// import ParcelCard from './ParcelCard';
+
+// export {Button, Input, InputText, ParcelCard};
+
 import Button from './Button';
 import Input from './Input';
-import InputText from './InputText';
-import Text from './Text';
+import IconFlatlist from './IconFlatlist';
 
-export {Button, Input, InputText, Text};
+import ParcelCard from './ParcelCard';
+
+export {Button, Input, ParcelCard, IconFlatlist};

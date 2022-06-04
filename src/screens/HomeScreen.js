@@ -21,7 +21,7 @@ const HomeScreen = () => {
     <SafeAreaView style={{backgroundColor: COLORS.yellow, flex: 1}}>
       <StatusBar barStyle="light-content" />
       <LottieView
-        source={require('../components/animations/5081-empty-box.json')}
+        source={require('../assets/animations/5081-empty-box.json')}
         autoPlay
         speed={0.3}
         loop={false}
