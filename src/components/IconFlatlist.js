@@ -6,6 +6,7 @@ import {
   StyleSheet,
   Image,
   Dimensions,
+  PixelRatio,
 } from 'react-native';
 import React from 'react';
 import {COLORS, Icons} from '../utils';
@@ -14,6 +15,7 @@ import {Features} from '../utils';
 const {width, height} = Dimensions.get('window');
 
 const IconFlatlist = ({item}) => {
+  const [features, setFeatures] = React.useState(Features);
   const renderItem = ({item, index, label, Icons}) => {
     return (
       <TouchableOpacity style={styles.itemContainer}>
@@ -33,7 +35,7 @@ const IconFlatlist = ({item}) => {
 
   return (
     <FlatList
-      data={Features}
+      data={features}
       renderItem={renderItem}
       numColumns={2}
       keyExtractor={item => `${item.id}`}
@@ -47,8 +49,8 @@ const IconFlatlist = ({item}) => {
 
 const styles = StyleSheet.create({
   flatlist: {
-    marginTop: 20,
-    marginHorizontal: 20,
+    marginTop: 2,
+    marginHorizontal: 30,
     flex: 1,
   },
 
@@ -82,17 +84,17 @@ const styles = StyleSheet.create({
   flContainer: {
     height: width * 0.3,
     width: width * 0.3,
-    borderRadius: 10,
+    borderRadius: 8,
     // backgroundColor: item.backgroundColor,
     alignItems: 'center',
     justifyContent: 'center',
-    margin: 10,
+    margin: 2,
   },
   image: {
-    width: width * 0.3,
-    height: width * 0.3,
+    width: width * 0.1,
+    height: width * 0.1,
 
-    tintColor: item.color,
+    tintColor: COLORS.black,
   },
   text: {
     fontSize: 14,

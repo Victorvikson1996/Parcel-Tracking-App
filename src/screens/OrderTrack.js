@@ -131,8 +131,8 @@ const styles = StyleSheet.create({
   parcelContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginHorizontal: 20,
-    marginVertical: 20,
+    // marginHorizontal: 20,
+    // marginVertical: 20,
   },
 });
 export default OrderTrack;
