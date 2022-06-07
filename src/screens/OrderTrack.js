@@ -7,14 +7,26 @@ import {
   KeyboardAvoidingView,
   TouchableWithoutFeedback,
   Dimensions,
+  PixelRatio,
+  TouchableOpacity,
 } from 'react-native';
 import React from 'react';
 import {COLORS, Items} from '../utils';
 import {Searchbar} from 'react-native-paper';
 import LottieView from 'lottie-react-native';
-import {ParcelCard, Button, Input, IconFlatlist} from '../components';
+import {ParcelCard, Input, Button, IconFlatlist} from '../components';
 
 const {width, height} = Dimensions.get('window');
+
+// const Button = ({label, onPress}) => {
+//   return (
+//     <TouchableOpacity onPress={onPress} style={styles.button}>
+//       <View style={styles.button}>
+//         <Text style={styles.buttonText}>{label}</Text>
+//       </View>
+//     </TouchableOpacity>
+//   );
+// };
 
 const renderItem = ({item, index}) => {
   return <ParcelCard item={item} index={index} />;
@@ -26,7 +38,7 @@ const Card = () => {
     <View style={styles.card}>
       <Text style={styles.cardText}>Track Your Order Just In One Click</Text>
       <LottieView
-        source={require('../assets/animations/50158-delivery-cart-box.json')}
+        source={require('../assets/animations/5081-empty-box.json')}
         autoPlay
         speed={0.3}
         loop={true}
@@ -42,18 +54,26 @@ const Card = () => {
 </View>; */
 }
 
-const OrderTrack = props => {
+const OrderTrack = ({onPress, navigation}) => {
   const [trackIcon, setTrackIcon] = React.useState('');
   return (
     <SafeAreaView style={styles.SafeAreaView}>
       <StatusBar barStyle="light-content" />
-
       <View style={styles.textContainer}>
         <Text style={styles.text}>Track Your Parcel</Text>
       </View>
-      <View style={styles.inputContainer}>
-        <Input placeholder="Enter Your Track ID" style={styles.textInput} />
+      <View style={styles.containerBox}>
+        <View style={styles.inputContainer}>
+          <Input placeholder="Enter Your Track ID" style={styles.textInput} />
+        </View>
+        <View style={styles.buttonContainer}>
+          <Button
+            label="Track"
+            onPress={() => navigation.navigate('TimeLine')}
+          />
+        </View>
       </View>
+
       <View style={{alignItems: 'center'}}>
         <Card />
       </View>
@@ -69,6 +89,9 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  containerBox: {
+    flexDirection: 'row',
   },
 
   textContainer: {
@@ -96,7 +119,7 @@ const styles = StyleSheet.create({
   cardText: {
     color: COLORS.black,
     fontSize: 14,
-    fontWeight: '600',
+    fontWeight: 'bold',
   },
 
   textInput: {
@@ -108,7 +131,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     borderColor: COLORS.grey,
     borderWidth: 1,
-    width: '80%',
+    width: width * 0.6,
   },
   textInput2: {
     backgroundColor: COLORS.white,
@@ -122,7 +145,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     alignItems: 'center',
   },
-  buttonContainer: {},
+
   SafeAreaView: {
     backgroundColor: COLORS.white,
     width: width,
@@ -133,6 +156,21 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     // marginHorizontal: 20,
     // marginVertical: 20,
+  },
+  buttonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 20,
+  },
+  button: {
+    backgroundColor: COLORS.black,
+    color: COLORS.white,
+    borderRadius: 12,
+  },
+  buttonText: {
+    color: COLORS.white,
+    fontSize: 16,
+    fontWeight: '600',
   },
 });
 export default OrderTrack;
