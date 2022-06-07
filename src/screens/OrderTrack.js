@@ -15,25 +15,14 @@ import {COLORS, Items} from '../utils';
 import {Searchbar} from 'react-native-paper';
 import LottieView from 'lottie-react-native';
 import {ParcelCard, Input, Button, IconFlatlist} from '../components';
+import axios from 'axios';
+import fetchTrack from '../api/fetchTrack';
 
 const {width, height} = Dimensions.get('window');
 
-// const Button = ({label, onPress}) => {
-//   return (
-//     <TouchableOpacity onPress={onPress} style={styles.button}>
-//       <View style={styles.button}>
-//         <Text style={styles.buttonText}>{label}</Text>
-//       </View>
-//     </TouchableOpacity>
-//   );
-// };
-
-const renderItem = ({item, index}) => {
-  return <ParcelCard item={item} index={index} />;
-};
-
 const Card = () => {
   const [itemIcon, setItemIcon] = React.useState(Items);
+
   return (
     <View style={styles.card}>
       <Text style={styles.cardText}>Track Your Order Just In One Click</Text>
@@ -55,7 +44,17 @@ const Card = () => {
 }
 
 const OrderTrack = ({onPress, navigation}) => {
-  const [trackIcon, setTrackIcon] = React.useState('');
+  const [trackId, setTrackId] = React.useState('');
+
+  const fetchTrackData = async () => {
+    const response = await fetchTrack(trackId);
+    console.log(response);
+  };
+
+  React.useEffect(() => {
+    fetchTrackData();
+  }, [trackId]);
+
   return (
     <SafeAreaView style={styles.SafeAreaView}>
       <StatusBar barStyle="light-content" />
