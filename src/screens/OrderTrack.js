@@ -44,16 +44,16 @@ const Card = () => {
 }
 
 const OrderTrack = ({onPress, navigation}) => {
-  const [trackId, setTrackId] = React.useState('');
+  const [trackId, setTrackId] = React.useState('S24DEMO456393');
 
   const fetchTrackData = async () => {
     const response = await fetchTrack(trackId);
     console.log(response);
   };
 
-  React.useEffect(() => {
-    fetchTrackData();
-  }, [trackId]);
+  // React.useEffect(() => {
+  //   fetchTrackData();
+  // }, [trackId]);
 
   return (
     <SafeAreaView style={styles.SafeAreaView}>
@@ -63,12 +63,17 @@ const OrderTrack = ({onPress, navigation}) => {
       </View>
       <View style={styles.containerBox}>
         <View style={styles.inputContainer}>
-          <Input placeholder="Enter Your Track ID" style={styles.textInput} />
+          <Input
+            placeholder="Enter Your Track ID"
+            style={styles.textInput}
+            value={trackId}
+            onChangeText={text => setTrackId(text)}
+          />
         </View>
         <View style={styles.buttonContainer}>
           <Button
             label="Track"
-            onPress={() => navigation.navigate('TimeLine')}
+            onPress={() => navigation.navigate('Time', {trackId})}
           />
         </View>
       </View>
