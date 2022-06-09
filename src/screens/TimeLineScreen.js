@@ -1,6 +1,19 @@
-import {View, Text, StyleSheet} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  StatusBar,
+  Dimensions,
+  SafeAreaView,
+  FlatList,
+} from 'react-native';
 import React from 'react';
 import {TimelineView} from '../components/Timeline';
+import {COLORS} from '../utils';
+
+const {height, width} = Dimensions.get('screen');
+
+import Timeline from 'react-native-beautiful-timeline';
 
 const data = [
   {
@@ -139,11 +152,24 @@ const data = [
   },
 ];
 
+const timeLineCard = data => {
+  return (
+    <View style={styles.timeLineCard}>
+      <Text style={styles.timeLineCardTitle}>{data.title}</Text>
+      <Text style={styles.timeLineCardSubTitle}>{data.subTitle}</Text>
+    </View>
+  );
+};
+
 const TimeLineScreen = () => {
   return (
-    <View style={styles.container}>
-      <Text>Hello</Text>
-    </View>
+    <SafeAreaView style={{flex: 1, backgroundColor: COLORS.white}}>
+      <StatusBar backgroundColor={COLORS.primary} barStyle="light-content" />
+      <View>
+        <Timeline data={data} />
+        <Text>Hello</Text>
+      </View>
+    </SafeAreaView>
   );
 };
 
