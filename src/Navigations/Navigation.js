@@ -7,8 +7,9 @@ import {
   ConfirmationScreen,
   HomeScreen,
   TimeLineScreen,
+  ProgressTimeline,
 } from '../screens';
-import Timeline from '../components/Timeline';
+import TimelineIndicator from '../components/TimelineIndicator';
 
 const Stack = createStackNavigator();
 
@@ -24,7 +25,7 @@ export default function Navigation() {
         <Stack.Screen name="OrderTrack" component={OrderTrack} />
         <Stack.Screen name="Confirmation" component={ConfirmationScreen} />
         <Stack.Screen name="TimeLine" component={TimeLineScreen} />
-        <Stack.Screen name="Time" component={Timeline} />
+        <Stack.Screen name="Time" component={TimelineIndicator} />
       </Stack.Navigator>
     </NavigationContainer>
   );

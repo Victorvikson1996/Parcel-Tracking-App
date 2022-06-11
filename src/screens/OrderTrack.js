@@ -73,7 +73,7 @@ const OrderTrack = ({onPress, navigation}) => {
         <View style={styles.buttonContainer}>
           <Button
             label="Track"
-            onPress={() => navigation.navigate('TimeLine', {trackId})}
+            onPress={() => navigation.navigate('Time', {trackId})}
           />
         </View>
       </View>

@@ -7,156 +7,203 @@ import {
   SafeAreaView,
   FlatList,
 } from 'react-native';
-import React from 'react';
-import {TimelineView} from '../components/Timeline';
+import React, {useEffect} from 'react';
+// import {TimelineView} from '../components/Timeline';
 import {COLORS} from '../utils';
 
 const {height, width} = Dimensions.get('screen');
 
-import Timeline from 'react-native-beautiful-timeline';
-
+import Timeline from 'react-native-timeline-flatlist';
 const data = [
   {
-    data: {
-      trackings: [
-        {
-          tracker: {
-            trackerId: '26148317-7502-d3ac-44a9-546d240ac0dd',
-            trackingNumber: 'S24DEMO456393',
-          },
-          shipment: {
-            shipmentId: 'f4f888d7-d140-423f-9a48-e0689d27e098',
-            originCountryCode: 'CN',
-            destinationCountryCode: 'US',
-            trackingNumbers: [
-              {
-                tn: 'S24DEMO169411',
-              },
-              {
-                tn: 'S24DEMO456393',
-              },
-            ],
-            delivery: {
-              estimatedDeliveryDate: '2021-03-04T17:00:00.000Z',
-              service: 'Parcel Post',
-            },
-          },
-          events: [
-            {
-              trackingNumber: 'S24DEMO169411',
-              eventTrackingNumber: 'S24DEMO169411',
-              status: 'Delivered to the addressee',
-              statusCategory: 'delivery',
-              statusCode: 'delivery_delivered',
-              datetime: '2021-03-04T17:12:57.000Z',
-              hasNoTime: false,
-              order: null,
-              utcOffset: null,
-              location: 'SAN RAFAEL, CA 94901',
-              courierCode: 'usps-tracking',
-            },
-            {
-              trackingNumber: 'S24DEMO169411',
-              eventTrackingNumber: 'S24DEMO169411',
-              status: 'Out for Delivery',
-              statusCategory: 'delivery',
-              statusCode: 'delivery_out_for_delivery',
-              datetime: '2021-03-04T10:12:57.000Z',
-              hasNoTime: false,
-              order: null,
-              utcOffset: null,
-              location: 'SAN RAFAEL, CA 94901',
-              courierCode: 'usps-tracking',
-            },
-            {
-              trackingNumber: 'S24DEMO169411',
-              eventTrackingNumber: 'S24DEMO169411',
-              status: 'Arrived at Hub, Your item arrived at the hub.',
-              datetime: '2021-03-04T06:12:57.000Z',
-              hasNoTime: false,
-              order: null,
-              utcOffset: null,
-              location: 'SAN RAFAEL, CA 94901',
-              courierCode: 'usps-tracking',
-            },
-            {
-              trackingNumber: 'S24DEMO169411',
-              eventTrackingNumber: 'S24DEMO169411',
-              status: 'Processed Through Regional Facility',
-              datetime: '2021-03-03T17:12:57.000Z',
-              hasNoTime: false,
-              order: null,
-              utcOffset: null,
-              location: 'LOS ANGELES CA INTERNATIONAL DISTRIBUTION CENTER',
-              courierCode: 'usps-tracking',
-            },
-            {
-              trackingNumber: 'S24DEMO169411',
-              eventTrackingNumber: 'S24DEMO169411',
-              status: 'Arrived at Regional Facility',
-              datetime: '2021-03-03T15:38:57.000Z',
-              hasNoTime: false,
-              order: null,
-              utcOffset: null,
-              location: 'LOS ANGELES CA INTERNATIONAL DISTRIBUTION CENTER',
-              courierCode: 'usps-tracking',
-            },
-            {
-              trackingNumber: 'S24DEMO169411',
-              eventTrackingNumber: 'S24DEMO456393',
-              status: 'Flight Departure',
-              datetime: '2021-03-02T23:24:50.000Z',
-              hasNoTime: false,
-              order: null,
-              utcOffset: null,
-              location: 'Beijing airport',
-              courierCode: null,
-            },
-            {
-              trackingNumber: 'S24DEMO169411',
-              eventTrackingNumber: 'S24DEMO456393',
-              status: 'Dispatched from Office of Exchange',
-              datetime: '2021-03-02T22:23:41.000Z',
-              hasNoTime: false,
-              order: null,
-              utcOffset: null,
-              location: 'Beijing',
-              courierCode: null,
-            },
-            {
-              trackingNumber: 'S24DEMO169411',
-              eventTrackingNumber: 'S24DEMO456393',
-              status: 'Depature from Local Sorting Center',
-              datetime: '2021-03-02T19:24:57.000Z',
-              hasNoTime: false,
-              order: null,
-              utcOffset: null,
-              location: 'Beijing',
-              courierCode: null,
-            },
-            {
-              trackingNumber: 'S24DEMO169411',
-              eventTrackingNumber: 'S24DEMO456393',
-              status: 'Package Received',
-              datetime: '2021-03-02T15:38:57.000Z',
-              hasNoTime: false,
-              order: null,
-              utcOffset: null,
-              location: 'Beijing',
-              courierCode: null,
-            },
-          ],
-        },
-      ],
-    },
+    date: 1574342522000,
+    data: [
+      {
+        trackingNumber: 'S24DEMO169411',
+        eventTrackingNumber: 'S24DEMO169411',
+        status: 'Delivered to the addressee',
+        statusCategory: 'delivery',
+        statusCode: 'delivery_delivered',
+        date: 1574342522000,
+        hasNoTime: false,
+        order: null,
+        utcOffset: null,
+        location: 'SAN RAFAEL, CA 94901',
+        courierCode: 'usps-tracking',
+      },
+      {
+        title: 'React Native',
+        subtitle: 'Sed viverra. Nam sagittis.',
+        date: 1574342501000,
+      },
+    ],
+  },
+  {
+    date: 1574248261000,
+    data: [
+      {
+        title: 'Timeline',
+        subtitle: 'Morbi magna orci, consequat in.',
+        date: 1574248261000,
+      },
+    ],
+  },
+  {
+    date: 1574125621000,
+    data: [
+      {
+        title: 'Beauty Timeline',
+        subtitle: 'Nulla a eleifend urna. Morbi. Praesent.',
+        date: 1574125621000,
+      },
+    ],
+  },
+  {
+    date: 1574125621000,
+    data: [
+      {
+        title: 'Timeline Title',
+        subtitle: 'Ut viverra. Nunc interdum.',
+        date: 1574125621000,
+      },
+    ],
+  },
+  {
+    date: 1574125621000,
+    data: [
+      {
+        title: 'In imperdiet.',
+        subtitle:
+          'Etiam at libero eu lacus.Proin pellentesque tempus neque, quis.',
+        date: 1574125621000,
+      },
+    ],
   },
 ];
 
-const timeLineCard = data => {
+const DummyData = [
+  {
+    trackingNumber: 'S24DEMO169411',
+    eventTrackingNumber: 'S24DEMO169411',
+    status: 'Delivered to the addressee',
+    statusCategory: 'delivery',
+    statusCode: 'delivery_delivered',
+    datetime: '2021-03-04T17:12:57.000Z',
+    hasNoTime: false,
+    order: null,
+    utcOffset: null,
+    location: 'SAN RAFAEL, CA 94901',
+    courierCode: 'usps-tracking',
+  },
+
+  {
+    trackingNumber: 'S24DEMO169411',
+    eventTrackingNumber: 'S24DEMO169411',
+    status: 'Out for Delivery',
+    statusCategory: 'delivery',
+    statusCode: 'delivery_out_for_delivery',
+    datetime: '2021-03-04T10:12:57.000Z',
+    hasNoTime: false,
+    order: null,
+    utcOffset: null,
+    location: 'SAN RAFAEL, CA 94901',
+    courierCode: 'usps-tracking',
+  },
+  {
+    trackingNumber: 'S24DEMO169411',
+    eventTrackingNumber: 'S24DEMO169411',
+    status: 'Arrived at Hub, Your item arrived at the hub.',
+    datetime: '2021-03-04T06:12:57.000Z',
+    hasNoTime: false,
+    order: null,
+    utcOffset: null,
+    location: 'SAN RAFAEL, CA 94901',
+    courierCode: 'usps-tracking',
+  },
+  {
+    trackingNumber: 'S24DEMO169411',
+    eventTrackingNumber: 'S24DEMO169411',
+    status: 'Processed Through Regional Facility',
+    datetime: '2021-03-03T17:12:57.000Z',
+    hasNoTime: false,
+    order: null,
+    utcOffset: null,
+    location: 'LOS ANGELES CA INTERNATIONAL DISTRIBUTION CENTER',
+    courierCode: 'usps-tracking',
+  },
+  {
+    trackingNumber: 'S24DEMO169411',
+    eventTrackingNumber: 'S24DEMO169411',
+    status: 'Arrived at Regional Facility',
+    datetime: '2021-03-03T15:38:57.000Z',
+    hasNoTime: false,
+    order: null,
+    utcOffset: null,
+    location: 'LOS ANGELES CA INTERNATIONAL DISTRIBUTION CENTER',
+    courierCode: 'usps-tracking',
+  },
+  {
+    trackingNumber: 'S24DEMO169411',
+    eventTrackingNumber: 'S24DEMO456393',
+    status: 'Flight Departure',
+    datetime: '2021-03-02T23:24:50.000Z',
+    hasNoTime: false,
+    order: null,
+    utcOffset: null,
+    location: 'Beijing airport',
+    courierCode: null,
+  },
+  {
+    trackingNumber: 'S24DEMO169411',
+    eventTrackingNumber: 'S24DEMO456393',
+    status: 'Dispatched from Office of Exchange',
+    datetime: '2021-03-02T22:23:41.000Z',
+    hasNoTime: false,
+    order: null,
+    utcOffset: null,
+    location: 'Beijing',
+    courierCode: null,
+  },
+  {
+    trackingNumber: 'S24DEMO169411',
+    eventTrackingNumber: 'S24DEMO456393',
+    status: 'Depature from Local Sorting Center',
+    datetime: '2021-03-02T19:24:57.000Z',
+    hasNoTime: false,
+    order: null,
+    utcOffset: null,
+    location: 'Beijing',
+    courierCode: null,
+  },
+  {
+    trackingNumber: 'S24DEMO169411',
+    eventTrackingNumber: 'S24DEMO456393',
+    status: 'Package Received',
+    datetime: '2021-03-02T15:38:57.000Z',
+    hasNoTime: false,
+    order: null,
+    utcOffset: null,
+    location: 'Beijing',
+    courierCode: null,
+  },
+];
+
+const TimeLineCard = ({label}) => {
+  return <Text style={styles.text}>{label}</Text>;
+};
+
+const Datarender = ({data}) => {
   return (
-    <View style={styles.timeLineCard}>
-      <Text style={styles.timeLineCardTitle}>{data.title}</Text>
-      <Text style={styles.timeLineCardSubTitle}>{data.subTitle}</Text>
+    <View style={styles.container}>
+      <View style={styles.header}>
+        <Text style={styles.headerText}>{data.title}</Text>
+      </View>
+      <View style={styles.body}>
+        <Text style={styles.bodyText}>{data.subtitle}</Text>
+      </View>
+      <View style={styles.footer}>
+        <Text style={styles.footerText}>{data.date}</Text>
+      </View>
     </View>
   );
 };
@@ -165,9 +212,8 @@ const TimeLineScreen = () => {
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: COLORS.white}}>
       <StatusBar backgroundColor={COLORS.primary} barStyle="light-content" />
-      <View>
+      <View style={styles.timelineContainer}>
         <Timeline data={data} />
-        <Text>Hello</Text>
       </View>
     </SafeAreaView>
   );
@@ -179,6 +225,22 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  text: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 10,
+  },
+  textContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    margin: 10,
+  },
+  timelineContainer: {
+    flex: 1,
+    backgroundColor: COLORS.white,
+    padding: 10,
   },
 });
 export default TimeLineScreen;

@@ -11,6 +11,7 @@ import React from 'react';
 import {Query} from 'react-query';
 import axios from 'axios';
 import {COLORS} from '../utils';
+import Timeline from 'react-native-timeline-flatlist';
 
 const {height, width} = Dimensions.get('screen');
 
@@ -44,29 +45,36 @@ const data = [
   },
 ];
 
+const renderItem = ({item}) => {
+  return (
+    <View style={styles.item}>
+      <Text style={styles.title}>{item.status}</Text>
+      <Text style={styles.date}>{item.date}</Text>
+      <Text style={styles.time}>{item.time}</Text>
+      <Text style={styles.location}>{item.location}</Text>
+      <Text style={styles.description}>{item.description}</Text>
+    </View>
+  );
+};
+
 export const TimelineView = () => {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.flatListContainer}>
         <FlatList
           data={data}
-          renderItem={({item}) => (
-            <View style={styles.item}>
-              <Text style={styles.title}>{item.status}</Text>
-              <Text style={styles.date}>{item.date}</Text>
-              <Text style={styles.time}>{item.time}</Text>
-              <Text style={styles.location}>{item.location}</Text>
-              <Text style={styles.description}>{item.description}</Text>
-            </View>
-          )}
+          renderItem={renderItem}
           keyExtractor={item => item.id}
+          showsVerticalScrollIndicator={false}
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={styles.flatList}
         />
       </View>
     </ScrollView>
   );
 };
 
-const Timeline = () => {
+const TimelineIndicator = () => {
   return <TimelineView />;
 };
 
@@ -131,4 +139,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Timeline;
+export default TimelineIndicator;
