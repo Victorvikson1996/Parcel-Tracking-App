@@ -188,6 +188,50 @@ const DummyData = [
   },
 ];
 
+const DummyData2 = [
+  {
+    time: '09:00',
+    title: 'Archery Training',
+    description:
+      'The Beginner Archery and Beginner Crossbow course does not require you to bring any equipment, since everything you need will be provided for the course. ',
+    circleColor: '#009688',
+    lineColor: '#009688',
+  },
+  {
+    time: '10:45',
+    title: 'Play Badminton',
+    description:
+      'Badminton is a racquet sport played using racquets to hit a shuttlecock across a net.',
+  },
+
+  {
+    time: '14:00',
+    title: 'Watch Soccer',
+    description:
+      'Team sport played between two teams of eleven players with a spherical ball. ',
+    lineColor: '#009688',
+  },
+  {
+    time: '16:30',
+    title: 'Go to Fitness center',
+    description: 'Look out for the Best Gym & Fitness Centers around me :)',
+    circleColor: '#009688',
+  },
+  {
+    time: '18:00',
+    title: 'Dinner',
+    description: 'Lunch is served in the restaurant. ',
+    circleColor: '#009688',
+  },
+  {
+    time: '19:30',
+    title: 'Go to the Cinema',
+    description:
+      'Cinema is a theater with projection facilities, usually a multiplex of several cinemas.',
+    circleColor: '#009688',
+  },
+];
+
 const TimeLineCard = ({label}) => {
   return <Text style={styles.text}>{label}</Text>;
 };
@@ -213,7 +257,7 @@ const TimeLineScreen = () => {
     <SafeAreaView style={{flex: 1, backgroundColor: COLORS.white}}>
       <StatusBar backgroundColor={COLORS.primary} barStyle="light-content" />
       <View style={styles.timelineContainer}>
-        <Timeline data={data} />
+        <Timeline data={DummyData2} style={styles.list} />
       </View>
     </SafeAreaView>
   );
@@ -241,6 +285,11 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: COLORS.white,
     padding: 10,
+  },
+  list: {
+    flex: 1,
+    marginTop: 10,
+    marginBottom: 10,
   },
 });
 export default TimeLineScreen;

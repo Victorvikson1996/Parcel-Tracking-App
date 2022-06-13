@@ -7,14 +7,11 @@ import {
   tintPrimary,
   tFareBtn,
 } from '../utils/TimeLineColor';
+import Icon from 'react-native-ionicons';
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 
-const CircleIcon = ({name, size, color}) => {
-  return (
-    <View>
-      <Image />
-    </View>
-  );
-};
+const theme = 'dark';
+
 const heightPixel = height => {
   return height * PixelRatio.get();
 };
@@ -38,11 +35,7 @@ const ProgressTimeline = () => {
   return (
     <View style={styles.progress}>
       <View style={styles.timeline}>
-        <Ionicons
-          name="md-checkmark-circle"
-          size={14}
-          color={Colors.successTint}
-        />
+        <Icon name="md-checkmark-circle" size={14} color={Colors.successTint} />
         <View
           style={[
             styles.borderView,
@@ -56,14 +49,14 @@ const ProgressTimeline = () => {
           condition={
             responseData.result?.status === 'processing' || 'confirmed'
           }>
-          <Ionicons
-            name="md-checkmark-circle"
+          <Icon
+            name="checkmark-circle-outline"
             size={14}
             color={Colors.successTint}
           />
         </IF>
         <IF condition={responseData.result?.status === 'submitted'}>
-          <FontAwesome name="circle" size={12} color={Colors.secondary} />
+          <FontAwesomeIcon name="circle" size={12} color={Colors.secondary} />
         </IF>
 
         <View
@@ -76,11 +69,11 @@ const ProgressTimeline = () => {
           ]}
         />
         <IF condition={responseData.result?.status !== 'confirmed'}>
-          <FontAwesome name="circle" size={12} color={Colors.secondary} />
+          <FontAwesomeIcon name="circle" size={12} color={Colors.secondary} />
         </IF>
         <IF condition={responseData.result?.status === 'confirmed'}>
-          <Ionicons
-            name="md-checkmark-circle"
+          <Icon
+            name="checkmark-circle-outline"
             size={14}
             color={Colors.successTint}
           />

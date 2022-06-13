@@ -26,6 +26,7 @@ export default function Navigation() {
         <Stack.Screen name="Confirmation" component={ConfirmationScreen} />
         <Stack.Screen name="TimeLine" component={TimeLineScreen} />
         <Stack.Screen name="Time" component={TimelineIndicator} />
+        <Stack.Screen name="Progress" component={ProgressTimeline} />
       </Stack.Navigator>
     </NavigationContainer>
   );
