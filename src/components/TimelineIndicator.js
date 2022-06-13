@@ -5,6 +5,7 @@ import {
   FlatList,
   ScrollView,
   Dimensions,
+  ActivityIndicator,
 } from 'react-native';
 import React from 'react';
 
@@ -17,7 +18,7 @@ const {height, width} = Dimensions.get('screen');
 
 const data = [
   {
-    id: 'S24DEMO456393',
+    id: 'S24674EMO456393',
     status: 'Intransit',
     date: '2020-01-01',
     time: '12:00',
@@ -26,7 +27,7 @@ const data = [
     icon: 'md-car',
   },
   {
-    id: 'S24DEMO456393',
+    id: 'S24DEMO676393',
     status: 'Delivered',
     date: '2020-01-01',
     time: '12:00',
@@ -35,16 +36,23 @@ const data = [
     icon: 'check',
   },
   {
-    id: 'S24DEMO456393',
+    id: 'S24DEMO4567493',
     status: 'Delivered',
     date: '2020-01-01',
     time: '12:00',
-    location: 'Kigali, Rwanda',
+    location: 'Abuja, Nigeria',
     description: 'Parcel delivered to recipient',
     icon: 'check',
   },
 ];
 
+const isLoading = () => {
+  return (
+    <View style={styles.loading}>
+      <ActivityIndicator size="large" color={COLORS.primary} />
+    </View>
+  );
+};
 const renderItem = ({item}) => {
   return (
     <View style={styles.item}>
@@ -136,6 +144,12 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: COLORS.white,
     padding: 20,
+  },
+
+  loading: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 

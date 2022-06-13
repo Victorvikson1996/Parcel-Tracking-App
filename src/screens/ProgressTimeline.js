@@ -1,6 +1,20 @@
 import {View, Text, StyleSheet, PixelRatio} from 'react-native';
 import React from 'react';
+import {
+  Colors,
+  tintColorDark,
+  tintColorLight,
+  tintPrimary,
+  tFareBtn,
+} from '../utils/TimeLineColor';
 
+const CircleIcon = ({name, size, color}) => {
+  return (
+    <View>
+      <Image />
+    </View>
+  );
+};
 const heightPixel = height => {
   return height * PixelRatio.get();
 };
