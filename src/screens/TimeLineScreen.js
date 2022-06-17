@@ -6,30 +6,32 @@ import {
   Dimensions,
   SafeAreaView,
   FlatList,
+  Image,
+  TouchableOpacity,
+  PixelRatio,
 } from 'react-native';
 import React, {useEffect} from 'react';
 // import {TimelineView} from '../components/Timeline';
 import {COLORS} from '../utils';
+import Timeline from 'react-native-beautiful-timeline';
 
 const {height, width} = Dimensions.get('screen');
+const heightPixel = height => {
+  return height * PixelRatio.get();
+};
 
-import Timeline from 'react-native-timeline-flatlist';
+const widthPixel = width => {
+  return width * PixelRatio.get();
+};
+
 const data = [
   {
     date: 1574342522000,
     data: [
       {
-        trackingNumber: 'S24DEMO169411',
-        eventTrackingNumber: 'S24DEMO169411',
-        status: 'Delivered to the addressee',
-        statusCategory: 'delivery',
-        statusCode: 'delivery_delivered',
-        date: 1574342522000,
-        hasNoTime: false,
-        order: null,
-        utcOffset: null,
-        location: 'SAN RAFAEL, CA 94901',
-        courierCode: 'usps-tracking',
+        title: 'React Native Beautiful Timeline',
+        subtitle: 'Sed at justo eros. Phasellus.',
+        date: 1274342522000,
       },
       {
         title: 'React Native',
@@ -81,113 +83,6 @@ const data = [
   },
 ];
 
-const DummyData = [
-  {
-    trackingNumber: 'S24DEMO169411',
-    eventTrackingNumber: 'S24DEMO169411',
-    status: 'Delivered to the addressee',
-    statusCategory: 'delivery',
-    statusCode: 'delivery_delivered',
-    datetime: '2021-03-04T17:12:57.000Z',
-    hasNoTime: false,
-    order: null,
-    utcOffset: null,
-    location: 'SAN RAFAEL, CA 94901',
-    courierCode: 'usps-tracking',
-  },
-
-  {
-    trackingNumber: 'S24DEMO169411',
-    eventTrackingNumber: 'S24DEMO169411',
-    status: 'Out for Delivery',
-    statusCategory: 'delivery',
-    statusCode: 'delivery_out_for_delivery',
-    datetime: '2021-03-04T10:12:57.000Z',
-    hasNoTime: false,
-    order: null,
-    utcOffset: null,
-    location: 'SAN RAFAEL, CA 94901',
-    courierCode: 'usps-tracking',
-  },
-  {
-    trackingNumber: 'S24DEMO169411',
-    eventTrackingNumber: 'S24DEMO169411',
-    status: 'Arrived at Hub, Your item arrived at the hub.',
-    datetime: '2021-03-04T06:12:57.000Z',
-    hasNoTime: false,
-    order: null,
-    utcOffset: null,
-    location: 'SAN RAFAEL, CA 94901',
-    courierCode: 'usps-tracking',
-  },
-  {
-    trackingNumber: 'S24DEMO169411',
-    eventTrackingNumber: 'S24DEMO169411',
-    status: 'Processed Through Regional Facility',
-    datetime: '2021-03-03T17:12:57.000Z',
-    hasNoTime: false,
-    order: null,
-    utcOffset: null,
-    location: 'LOS ANGELES CA INTERNATIONAL DISTRIBUTION CENTER',
-    courierCode: 'usps-tracking',
-  },
-  {
-    trackingNumber: 'S24DEMO169411',
-    eventTrackingNumber: 'S24DEMO169411',
-    status: 'Arrived at Regional Facility',
-    datetime: '2021-03-03T15:38:57.000Z',
-    hasNoTime: false,
-    order: null,
-    utcOffset: null,
-    location: 'LOS ANGELES CA INTERNATIONAL DISTRIBUTION CENTER',
-    courierCode: 'usps-tracking',
-  },
-  {
-    trackingNumber: 'S24DEMO169411',
-    eventTrackingNumber: 'S24DEMO456393',
-    status: 'Flight Departure',
-    datetime: '2021-03-02T23:24:50.000Z',
-    hasNoTime: false,
-    order: null,
-    utcOffset: null,
-    location: 'Beijing airport',
-    courierCode: null,
-  },
-  {
-    trackingNumber: 'S24DEMO169411',
-    eventTrackingNumber: 'S24DEMO456393',
-    status: 'Dispatched from Office of Exchange',
-    datetime: '2021-03-02T22:23:41.000Z',
-    hasNoTime: false,
-    order: null,
-    utcOffset: null,
-    location: 'Beijing',
-    courierCode: null,
-  },
-  {
-    trackingNumber: 'S24DEMO169411',
-    eventTrackingNumber: 'S24DEMO456393',
-    status: 'Depature from Local Sorting Center',
-    datetime: '2021-03-02T19:24:57.000Z',
-    hasNoTime: false,
-    order: null,
-    utcOffset: null,
-    location: 'Beijing',
-    courierCode: null,
-  },
-  {
-    trackingNumber: 'S24DEMO169411',
-    eventTrackingNumber: 'S24DEMO456393',
-    status: 'Package Received',
-    datetime: '2021-03-02T15:38:57.000Z',
-    hasNoTime: false,
-    order: null,
-    utcOffset: null,
-    location: 'Beijing',
-    courierCode: null,
-  },
-];
-
 const DummyData2 = [
   {
     time: '09:00',
@@ -197,6 +92,7 @@ const DummyData2 = [
     circleColor: '#009688',
     lineColor: '#009688',
   },
+
   {
     time: '10:45',
     title: 'Play Badminton',
@@ -252,12 +148,45 @@ const Datarender = ({data}) => {
   );
 };
 
-const TimeLineScreen = () => {
+const Header = () => {
+  return (
+    <View style={styles.header}>
+      <Text style={styles.headerText}>Timeline</Text>
+    </View>
+  );
+};
+
+const BackNavigation = ({onPress, navigation}) => {
+  return (
+    <TouchableOpacity onPress={onPress} style={styles.backNavigation}>
+      <Image
+        source={require('../assets/Icons/left-arrow.png')}
+        style={{
+          width: widthPixel(10),
+          height: heightPixel(10),
+          tintColor: COLORS.black,
+          marginLeft: widthPixel(2),
+          flexDirection: 'row',
+        }}
+      />
+    </TouchableOpacity>
+  );
+};
+const TimeLineScreen = ({navigation}) => {
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: COLORS.white}}>
-      <StatusBar backgroundColor={COLORS.primary} barStyle="light-content" />
+      <StatusBar backgroundColor={COLORS.white} barStyle="light-content" />
+      <View
+        style={{
+          backgroundColor: COLORS.white,
+          top: -10,
+          height: heightPixel(10),
+          width: widthPixel(100),
+        }}>
+        <BackNavigation onPress={() => navigation.goBack()} />
+      </View>
       <View style={styles.timelineContainer}>
-        <Timeline data={DummyData2} style={styles.list} />
+        <Timeline data={data} style={styles.timeline} />
       </View>
     </SafeAreaView>
   );
@@ -290,6 +219,47 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: 10,
     marginBottom: 10,
+  },
+  timeline: {
+    flex: 1,
+    marginTop: 10,
+    marginBottom: 10,
+  },
+  header: {
+    backgroundColor: COLORS.primary,
+    padding: 10,
+    marginTop: 10,
+    marginBottom: 10,
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: COLORS.primary,
+  },
+  headerText: {
+    color: COLORS.white,
+    fontSize: 20,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  backNavigation: {
+    position: 'absolute',
+    top: 10,
+    left: 10,
+    zIndex: 1,
+  },
+  icon: {
+    width: width * 0.08,
+    height: height * 0.05,
+    padding: 10,
+  },
+  navigationContainer: {},
+  height: {
+    height: height * 0.1,
+  },
+  headerText: {
+    color: COLORS.white,
+    fontSize: 20,
+    fontWeight: 'bold',
+    textAlign: 'center',
   },
 });
 export default TimeLineScreen;
