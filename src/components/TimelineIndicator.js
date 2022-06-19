@@ -12,7 +12,6 @@ import React from 'react';
 import {Query} from 'react-query';
 import axios from 'axios';
 import {COLORS} from '../utils';
-import Timeline from 'react-native-timeline-flatlist';
 
 const {height, width} = Dimensions.get('screen');
 

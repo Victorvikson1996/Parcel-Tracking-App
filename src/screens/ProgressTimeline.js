@@ -8,7 +8,6 @@ import {
   tFareBtn,
 } from '../utils/TimeLineColor';
 import Icon from 'react-native-ionicons';
-import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 
 const theme = 'dark';
 
