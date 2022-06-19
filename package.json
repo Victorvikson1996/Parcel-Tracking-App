@@ -10,6 +10,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@react-native-community/toolbar-android": "^0.1.0-rc.2",
     "@react-native-masked-view/masked-view": "^0.2.6",
     "@react-navigation/native": "^6.0.10",
     "@react-navigation/stack": "^6.2.1",
@@ -22,6 +23,7 @@
     "react-native-beautiful-timeline": "^0.1.1",
     "react-native-gesture-handler": "^2.4.2",
     "react-native-ionicons": "^4.6.5",
+    "react-native-just-timeline": "^0.0.2",
     "react-native-paper": "^4.12.1",
     "react-native-safe-area-context": "^4.2.5",
     "react-native-screens": "^3.13.1",

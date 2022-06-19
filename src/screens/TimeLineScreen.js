@@ -13,7 +13,7 @@ import {
 import React, {useEffect} from 'react';
 // import {TimelineView} from '../components/Timeline';
 import {COLORS} from '../utils';
-import Timeline from 'react-native-beautiful-timeline';
+import {Timeline} from 'react-native-just-timeline';
 
 const {height, width} = Dimensions.get('screen');
 const heightPixel = height => {
