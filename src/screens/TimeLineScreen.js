@@ -71,7 +71,7 @@ const data = [
       </View>
     ),
     description: {
-      content: 'Parcel arrive at Qatar Airport Qatar',
+      content: 'Parcel arrive at Doha International Airport Doha',
     },
     time: {
       content: moment().format('ll'),
@@ -100,12 +100,12 @@ const data = [
           {moment().format('lll')}
         </Text>
         <Text style={[styles, {marginBottom: 0, color: '#fccd05'}]}>
-          Item Expiring Event
+          Parcel In Transit
         </Text>
       </View>
     ),
     description: {
-      content: 'Item Expiring Event Description',
+      content: 'Parcel left Doha International Airport Doha',
     },
     time: {
       content: moment().format('ll'),
@@ -133,6 +133,75 @@ const data = [
         <Text style={{fontSize: 10, color: '#999', marginBottom: 7}}>
           {moment().format('lll')}
         </Text>
+        <Text style={[styles, {marginBottom: 0, color: '#fccd05'}]}>
+          Parcel In Transit
+        </Text>
+      </View>
+    ),
+    description: {
+      content: 'Parcel arrive Nnamdi Azikiwe International Airport Abuja',
+    },
+
+    time: {
+      content: moment().format('ll'),
+      style: {
+        paddingTop: 8,
+      },
+    },
+    icon: {
+      content: 'clock-o',
+      style: {
+        width: 35,
+        height: 35,
+        backgroundColor: '#fccd05',
+        color: '#FFF',
+        borderColor: '#FFF',
+        fontSize: 16,
+        paddingTop: 6,
+        borderRadius: 18,
+      },
+    },
+  },
+  {
+    title: ({styles}) => (
+      <View>
+        <Text style={{fontSize: 10, color: '#999', marginBottom: 7}}>
+          {moment().format('lll')}
+        </Text>
+        <Text style={[styles, {marginBottom: 0, color: '#fccd05'}]}>
+          Parcel In Transit
+        </Text>
+      </View>
+    ),
+    description: {
+      content: 'Parcel arrived at  local delivery outlet in Kubwa',
+    },
+    time: {
+      content: moment().format('ll'),
+      style: {
+        paddingTop: 8,
+      },
+    },
+    icon: {
+      content: 'clock-o',
+      style: {
+        width: 35,
+        height: 35,
+        backgroundColor: '#fccd05',
+        color: '#FFF',
+        borderColor: '#FFF',
+        fontSize: 16,
+        paddingTop: 6,
+        borderRadius: 18,
+      },
+    },
+  },
+  {
+    title: ({styles}) => (
+      <View>
+        <Text style={{fontSize: 10, color: '#999', marginBottom: 7}}>
+          {moment().subtract(10, 'days').calendar()}
+        </Text>
         <Text style={[styles, {marginBottom: 0, color: '#d2584b'}]}>
           Parcel Delayed
         </Text>
@@ -140,7 +209,7 @@ const data = [
     ),
     description: {
       content: 'Parcel delayed due to heavy rain',
-      date: moment().format('lll'),
+      date: moment().add(3, 'days').calendar(),
     },
     time: {
       content: moment().format('ll'),
@@ -162,84 +231,39 @@ const data = [
       },
     },
   },
-
   {
-    title: {
-      content: 'Normal Event',
-    },
+    title: ({styles}) => (
+      <View>
+        <Text style={{fontSize: 10, color: '#999', marginBottom: 7}}>
+          {moment().format('lll')}
+        </Text>
+        <Text style={[styles, {marginBottom: 0, color: '#00b48b'}]}>
+          Parcel Delivered
+        </Text>
+      </View>
+    ),
     description: {
-      content: 'Normal Event Description',
+      content: 'Parcel delivered to customer',
     },
     time: {
       content: moment().format('ll'),
+      style: {
+        paddingTop: 8,
+      },
     },
-  },
-  {
-    title: {
-      content: 'Normal Event',
+    icon: {
+      content: 'check',
+      style: {
+        width: 35,
+        height: 35,
+        backgroundColor: '#00b48b',
+        color: '#FFF',
+        borderColor: '#FFF',
+        fontSize: 16,
+        paddingTop: 6,
+        borderRadius: 18,
+      },
     },
-    description: {
-      content: 'Normal Event Description',
-    },
-    time: {
-      content: moment().format('ll'),
-    },
-  },
-  {
-    title: {
-      content: 'Normal Event',
-    },
-    description: {
-      content: 'Normal Event Description',
-    },
-    time: {
-      content: moment().format('ll'),
-    },
-  },
-];
-
-const DummyData2 = [
-  {
-    time: '09:00',
-    title: 'Archery Training',
-    description:
-      'The Beginner Archery and Beginner Crossbow course does not require you to bring any equipment, since everything you need will be provided for the course. ',
-    circleColor: '#009688',
-    lineColor: '#009688',
-  },
-
-  {
-    time: '10:45',
-    title: 'Play Badminton',
-    description:
-      'Badminton is a racquet sport played using racquets to hit a shuttlecock across a net.',
-  },
-
-  {
-    time: '14:00',
-    title: 'Watch Soccer',
-    description:
-      'Team sport played between two teams of eleven players with a spherical ball. ',
-    lineColor: '#009688',
-  },
-  {
-    time: '16:30',
-    title: 'Go to Fitness center',
-    description: 'Look out for the Best Gym & Fitness Centers around me :)',
-    circleColor: '#009688',
-  },
-  {
-    time: '18:00',
-    title: 'Dinner',
-    description: 'Lunch is served in the restaurant. ',
-    circleColor: '#009688',
-  },
-  {
-    time: '19:30',
-    title: 'Go to the Cinema',
-    description:
-      'Cinema is a theater with projection facilities, usually a multiplex of several cinemas.',
-    circleColor: '#009688',
   },
 ];
 
