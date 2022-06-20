@@ -11,7 +11,7 @@ import {
   PixelRatio,
 } from 'react-native';
 import React, {useEffect} from 'react';
-// import {TimelineView} from '../components/Timeline';
+import moment from 'moment';
 import {COLORS} from '../utils';
 import {Timeline} from 'react-native-just-timeline';
 
@@ -26,60 +26,175 @@ const widthPixel = width => {
 
 const data = [
   {
-    date: 1574342522000,
-    data: [
-      {
-        title: 'React Native Beautiful Timeline',
-        subtitle: 'Sed at justo eros. Phasellus.',
-        date: 1274342522000,
+    title: ({styles}) => (
+      <View>
+        <Text style={{fontSize: 10, color: '#999', marginBottom: 7}}>
+          {moment().format('lll')}
+        </Text>
+        <Text style={[styles, {marginBottom: 0, color: '#00b48b'}]}>
+          Parcel out for Delivery
+        </Text>
+      </View>
+    ),
+    description: {
+      content: 'Parcel Left Ghandi International Airport New Delhi',
+    },
+    time: {
+      content: moment().format('ll'),
+      style: {
+        paddingTop: 8,
       },
-      {
-        title: 'React Native',
-        subtitle: 'Sed viverra. Nam sagittis.',
-        date: 1574342501000,
+    },
+    icon: {
+      content: 'check',
+      style: {
+        width: 35,
+        height: 35,
+        backgroundColor: '#00b48b',
+        color: '#FFF',
+        borderColor: '#FFF',
+        fontSize: 16,
+        paddingTop: 6,
+        borderRadius: 18,
       },
-    ],
+    },
   },
   {
-    date: 1574248261000,
-    data: [
-      {
-        title: 'Timeline',
-        subtitle: 'Morbi magna orci, consequat in.',
-        date: 1574248261000,
+    title: ({styles}) => (
+      <View>
+        <Text style={{fontSize: 10, color: '#999', marginBottom: 7}}>
+          {moment().format('lll')}
+        </Text>
+        <Text style={[styles, {marginBottom: 0, color: '#fccd05'}]}>
+          Parcel In Transit
+        </Text>
+      </View>
+    ),
+    description: {
+      content: 'Parcel arrive at Qatar Airport Qatar',
+    },
+    time: {
+      content: moment().format('ll'),
+      style: {
+        paddingTop: 8,
       },
-    ],
+    },
+    icon: {
+      content: 'clock-o',
+      style: {
+        width: 35,
+        height: 35,
+        backgroundColor: '#fccd05',
+        color: '#FFF',
+        borderColor: '#FFF',
+        fontSize: 16,
+        paddingTop: 6,
+        borderRadius: 18,
+      },
+    },
   },
   {
-    date: 1574125621000,
-    data: [
-      {
-        title: 'Beauty Timeline',
-        subtitle: 'Nulla a eleifend urna. Morbi. Praesent.',
-        date: 1574125621000,
+    title: ({styles}) => (
+      <View>
+        <Text style={{fontSize: 10, color: '#999', marginBottom: 7}}>
+          {moment().format('lll')}
+        </Text>
+        <Text style={[styles, {marginBottom: 0, color: '#fccd05'}]}>
+          Item Expiring Event
+        </Text>
+      </View>
+    ),
+    description: {
+      content: 'Item Expiring Event Description',
+    },
+    time: {
+      content: moment().format('ll'),
+      style: {
+        paddingTop: 8,
       },
-    ],
+    },
+    icon: {
+      content: 'clock-o',
+      style: {
+        width: 35,
+        height: 35,
+        backgroundColor: '#fccd05',
+        color: '#FFF',
+        borderColor: '#FFF',
+        fontSize: 16,
+        paddingTop: 6,
+        borderRadius: 18,
+      },
+    },
   },
   {
-    date: 1574125621000,
-    data: [
-      {
-        title: 'Timeline Title',
-        subtitle: 'Ut viverra. Nunc interdum.',
-        date: 1574125621000,
+    title: ({styles}) => (
+      <View>
+        <Text style={{fontSize: 10, color: '#999', marginBottom: 7}}>
+          {moment().format('lll')}
+        </Text>
+        <Text style={[styles, {marginBottom: 0, color: '#d2584b'}]}>
+          Parcel Delayed
+        </Text>
+      </View>
+    ),
+    description: {
+      content: 'Parcel delayed due to heavy rain',
+      date: moment().format('lll'),
+    },
+    time: {
+      content: moment().format('ll'),
+      style: {
+        paddingTop: 8,
       },
-    ],
+    },
+    icon: {
+      content: 'check',
+      style: {
+        width: 35,
+        height: 35,
+        backgroundColor: '#d2584b',
+        color: '#FFF',
+        borderColor: '#FFF',
+        fontSize: 16,
+        paddingTop: 6,
+        borderRadius: 18,
+      },
+    },
+  },
+
+  {
+    title: {
+      content: 'Normal Event',
+    },
+    description: {
+      content: 'Normal Event Description',
+    },
+    time: {
+      content: moment().format('ll'),
+    },
   },
   {
-    date: 1574125621000,
-    data: [
-      {
-        title: 'In imperdiet.',
-        subtitle:
-          'Etiam at libero eu lacus.Proin pellentesque tempus neque, quis.',
-        date: 1574125621000,
-      },
-    ],
+    title: {
+      content: 'Normal Event',
+    },
+    description: {
+      content: 'Normal Event Description',
+    },
+    time: {
+      content: moment().format('ll'),
+    },
+  },
+  {
+    title: {
+      content: 'Normal Event',
+    },
+    description: {
+      content: 'Normal Event Description',
+    },
+    time: {
+      content: moment().format('ll'),
+    },
   },
 ];
 
@@ -148,14 +263,6 @@ const Datarender = ({data}) => {
   );
 };
 
-const Header = () => {
-  return (
-    <View style={styles.header}>
-      <Text style={styles.headerText}>Timeline</Text>
-    </View>
-  );
-};
-
 const BackNavigation = ({onPress, navigation}) => {
   return (
     <TouchableOpacity onPress={onPress} style={styles.backNavigation}>
@@ -186,7 +293,7 @@ const TimeLineScreen = ({navigation}) => {
         <BackNavigation onPress={() => navigation.goBack()} />
       </View>
       <View style={styles.timelineContainer}>
-        <Timeline data={data} style={styles.timeline} />
+        <Timeline data={data} />
       </View>
     </SafeAreaView>
   );
