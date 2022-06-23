@@ -14,6 +14,10 @@ import {Features} from '../utils';
 
 const {width, height} = Dimensions.get('window');
 
+const sum = (a, b) => {
+  return a + b;
+};
+
 const IconFlatlist = ({item}) => {
   const [features, setFeatures] = React.useState(Features);
   const renderItem = ({item, index, label, Icons}) => {

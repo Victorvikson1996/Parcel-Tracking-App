@@ -9,6 +9,8 @@ import {
   Dimensions,
   PixelRatio,
   TouchableOpacity,
+  Image,
+  ScrollView,
 } from 'react-native';
 import React from 'react';
 import {COLORS, Items} from '../utils';
@@ -27,7 +29,7 @@ const Card = () => {
     <View style={styles.card}>
       <Text style={styles.cardText}>Track Your Order Just In One Click</Text>
       <LottieView
-        source={require('../assets/animations/5081-empty-box.json')}
+        source={require('../assets/animations/33318-parcel-delivery-tracking.json')}
         autoPlay
         speed={0.3}
         loop={true}
@@ -43,8 +45,21 @@ const Card = () => {
 </View>; */
 }
 
+const PromoCard = () => {
+  return (
+    <View style={styles.promocontainer}>
+      <LottieView
+        source={require('../assets/animations/36289-super-sale.json')}
+        autoPlay
+        speed={0.3}
+        loop={true}
+      />
+    </View>
+  );
+};
+
 const OrderTrack = ({onPress, navigation}) => {
-  const [trackId, setTrackId] = React.useState('S24DEMO456393');
+  const [trackId, setTrackId] = React.useState('');
 
   const fetchTrackData = async () => {
     const response = await fetchTrack(trackId);
@@ -55,35 +70,54 @@ const OrderTrack = ({onPress, navigation}) => {
   //   fetchTrackData();
   // }, [trackId]);
 
-  return (
-    <SafeAreaView style={styles.SafeAreaView}>
-      <StatusBar barStyle="light-content" />
-      <View style={styles.textContainer}>
-        <Text style={styles.text}>Track Your Parcel</Text>
-      </View>
-      <View style={styles.containerBox}>
-        <View style={styles.inputContainer}>
-          <Input
-            placeholder="Enter Your Track ID"
-            style={styles.textInput}
-            value={trackId}
-            onChangeText={text => setTrackId(text)}
-          />
-        </View>
-        <View style={styles.buttonContainer}>
-          <Button
-            label="Track"
-            onPress={() => navigation.navigate('TimeLine', {trackId})}
-          />
-        </View>
-      </View>
+  const active = () => {
+    if (trackId.length > 0) {
+      return (
+        <Button label="Track" onPress={() => navigation.navigate('TimeLine')} />
+      );
+    } else {
+      return <Button label="Track" disabled />;
+    }
+  };
 
-      <View style={{alignItems: 'center'}}>
-        <Card />
-      </View>
-      <View style={styles.parcelContainer}>
-        <IconFlatlist />
-      </View>
+  const keyboardType = () => {
+    if (trackId.length > 0) {
+      return 'default';
+    } else {
+      return 'numeric';
+    }
+  };
+
+  return (
+    <SafeAreaView style={styles.SafeAreaView} nestedScrollEnabled={true}>
+      <ScrollView>
+        <StatusBar barStyle="light-content" />
+        <View style={styles.textContainer}>
+          <Text style={styles.text}>Track Your Parcel</Text>
+        </View>
+        <View style={styles.containerBox}>
+          <View style={styles.inputContainer}>
+            <Input
+              placeholder="Enter Your Track ID"
+              style={styles.textInput}
+              value={trackId}
+              onChangeText={text => setTrackId(text)}
+              keyboardType="number-pad"
+            />
+          </View>
+          <View style={styles.buttonContainer}>{active()}</View>
+        </View>
+        <View>
+          <PromoCard />
+        </View>
+
+        <View style={{alignItems: 'center'}}>
+          <Card />
+        </View>
+        <View style={styles.parcelContainer}>
+          <IconFlatlist />
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };
@@ -110,7 +144,7 @@ const styles = StyleSheet.create({
     color: COLORS.black,
   },
   card: {
-    backgroundColor: COLORS.yellow,
+    backgroundColor: COLORS.white,
     borderRadius: 12,
     paddingHorizontal: 20,
     paddingVertical: 20,
@@ -119,6 +153,13 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     height: height * 0.25,
     width: '90%',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   cardText: {
     color: COLORS.black,
@@ -176,5 +217,24 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '600',
   },
+  promocontainer: {
+    backgroundColor: COLORS.yellow,
+    borderRadius: 12,
+    paddingHorizontal: 20,
+    paddingVertical: 20,
+    marginHorizontal: 20,
+    marginTop: 20,
+    marginBottom: 20,
+    height: height * 0.16,
+    width: '90%',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+  },
+  imageContainer: {},
 });
 export default OrderTrack;
