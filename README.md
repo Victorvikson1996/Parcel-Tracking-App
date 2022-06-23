@@ -4,7 +4,8 @@
 
 ## Features
 
-- The Project Tracking App is a mobile app that allows you to track your parcel delivery.
+Mobile Application that alows you track your parcel
+
 - React Native CLI
 - iOS and Android
 - React Navigation
@@ -15,8 +16,9 @@ First: `npm install`
 Install: `cd ios && pod install cd ..`
 
 For IOS and Android, you can use the following commands:
-`npx react-native run-ios`
-`npx react-native run-android`
+
+- `npx react-native run-ios`
+- `npx react-native run-android`
 
 Run Project Locally: `yarn dev` or `yarn start`
 
