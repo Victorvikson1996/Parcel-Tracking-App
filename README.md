@@ -10,6 +10,12 @@ Mobile Application that alows you track your parcel
 - iOS and Android
 - React Navigation
 
+<p float="left">
+<img src="screenshots/Home.PNG?raw=true" width="360" />
+  <img src="screenshots/Track.PNG?raw=true" width="360" />
+  <img src="screenshots/TimeLine.PNG?raw=true" width="360" />
+</p>
+
 ## Install & Build
 
 First: `npm install`
