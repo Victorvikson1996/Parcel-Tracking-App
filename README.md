@@ -11,9 +11,9 @@ Mobile Application that alows you track your parcel
 - React Navigation
 
 <p float="left">
-<img src="screenshots/Home.png?raw=true" width="360" />
-  <img src="screenshots/Track.png?raw=true" width="360" />
-  <img src="screenshots/TimeLine.png?raw=true" width="360" />
+<img src="screenshots/Home.png?raw=true" width="300" />
+  <img src="screenshots/Track.png?raw=true" width="300" />
+  <img src="screenshots/TimeLine.png?raw=true" width="300" />
 </p>
 
 ## Install & Build
@@ -28,4 +28,4 @@ For IOS and Android, you can use the following commands:
 
 Run Project Locally: `yarn dev` or `yarn start`
 
-This project will beupdated in future Google maps updates etc
+This project will be updated in future with live map tracking etc
