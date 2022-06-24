@@ -11,7 +11,7 @@ Mobile Application that alows you track your parcel
 - React Navigation
 
 <p float="left">
-<img src="screenshots/Home.PNG?raw=true" width="360" />
+<img src="src/screenshoots/Home.png?raw=true" width="360" />
   <img src="screenshots/Track.PNG?raw=true" width="360" />
   <img src="screenshots/TimeLine.PNG?raw=true" width="360" />
 </p>
